@@ -24,5 +24,15 @@
     * chest   
     * back   
     * lower body   
+
+
+ ### 기능
+  * findAll() // 모든 목록 출력
+  * save() // 저장
+
+
+ ### 폼
+  * addForm // 등록하는 폼
+  * healths  // 헬스 목록 폼
     
 
