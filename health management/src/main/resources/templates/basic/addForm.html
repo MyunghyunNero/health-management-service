@@ -16,23 +16,31 @@
         <h2>헬스 일정 등록 폼</h2>
     </div>
     <h4 class="mb-3">헬스 입력</h4>
-    <form action="item.html" th:action method="post">
+    <form action="healths.html" th:action="@{/basic/healths/add}" th:object="${Health}" method="post">
         <div>
             <label for="datetime">헬스 날짜</label>
-            <input type="text" id="datetime" name="datatime" class="form-control" placeholder="날짜를 입력하세요">
+            <input type="text" id="datetime" th:field="*{datetime}" class="form-control" placeholder="날짜를 입력하세요">
         </div>
         <div>
-            <label for="exercise">운동</label>
-            <input type="text" id="exercise" name="exercise" class="form-control"
+            <label for="exerciseName">운동</label>
+            <input type="text" id="exerciseName" th:field="*{exerciseName}" class="form-control"
                    placeholder="해야할 운동을 입력하세요">
         </div>
         <div>
             <label for="set">세트</label>
-            <input type="text" id="set" name="set" class="form-control" placeholder="세트를 입력하세요">
+            <input type="text" id="set" th:field="*{set}" class="form-control" placeholder="세트를 입력하세요">
         </div>
         <div>
             <label for="count">횟수</label>
-            <input type="text" id="count" name="count" class="form-control" placeholder="횟수를 입력하세요">
+            <input type="text" id="count" th:field="*{count}" class="form-control" placeholder="횟수를 입력하세요">
+        </div>
+        <hr class="my-4">
+        <div>
+            <div>운동 부위 선택 </div>
+            <div th:each="type : ${locationtype}" class="form-check">
+                <input type="radio" th:field="*{location}" th:value="${type.name()}" class="form-check-input">
+                <label th:for="${#ids.prev('location')}" th:text="${type.location}"  class="form-check-label"></label>
+            </div>
         </div>
         <hr class="my-4">
         <div class="row">

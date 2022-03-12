@@ -1,24 +1,21 @@
 package health.health.management.domain;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class healthRepository {
 
-    private static final Map<Long,health> store = new HashMap<>();
+    private static final Map<Long,Health> store = new HashMap<>();
     private static Long sequence=0L;
-
-    public health save(health h){
-        h.setNum(++sequence);
-        store.put(h.getNum(),h);
-        return h;
+    public Health save(Health health){
+        health.setNum(++sequence);
+        store.put(health.getNum(),health);
+        return health;
     }
-    public List<health> findAll(){
+    public List<Health> findAll(){
         return new ArrayList<>(store.values());
     }
 
