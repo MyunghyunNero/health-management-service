@@ -29,10 +29,12 @@
  ### 기능
   * findAll() // 모든 목록 출력       (구현)
   * save() // 저장                 (구현)
-
+  * findByLocation() // 부위별로 저장 (구현)
+  * delete()  //삭제                   
 
  ### 폼
   * addForm // 등록하는 폼       (구현)
   * healths  // 헬스 목록 폼       (구현)
+  * location   // 부위 별로 목록 폼  (구현
     
 
