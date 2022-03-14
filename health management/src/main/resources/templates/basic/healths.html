@@ -23,6 +23,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>수정</th>
                 <th>날짜</th>
                 <th>운동 부위</th>
                 <th>운동</th>
@@ -32,6 +33,9 @@
             </thead>
             <tbody>
             <tr th:each="health : ${healths}">
+                <td><button class="w-100 btn btn-primary btn-lg"
+                            onclick="location.href='editForm.html'"
+                            th:onclick="|location.href='@{/basic/healths/{healthnum}/edit(healthnum=${health.num})}'|" type="button">수정</button></td>
                 <td th:text="${health.datetime}">날짜</td>
                 <td><a href="location.html" th:href="@{/basic/healths/{location}(location=${health.location})}"th:text="${health.location.getLocation()}">운동 부위</a></td>
                 <td th:text="${health.exerciseName}">운동</td>

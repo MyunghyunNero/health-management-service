@@ -28,5 +28,19 @@ public class healthRepository {
                 .filter(health -> health.getLocation().name().equals(location))
                 .collect(Collectors.toList());
     }
+    // num값으로 일정 찾기
+    public Health findById(Long num){
+        return store.get(num);
+    }
+    public void update(Long num,Health updateparam){
+        Health findhealth = findById(num);
+        findhealth.setDatetime(updateparam.getDatetime());
+        findhealth.setSet(updateparam.getSet());
+        findhealth.setCount(updateparam.getCount());
+    }
+    // 일정 삭제하기
+    public void delete(Long num){
+        store.remove(num);
+    }
 
 }

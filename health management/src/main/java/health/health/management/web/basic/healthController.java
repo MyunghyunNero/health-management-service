@@ -37,7 +37,7 @@ public class healthController {
     @PostMapping("/add")
     public String add(@ModelAttribute Health health){
         healthRepository.save(health);
-        return "redirect:";
+        return "redirect:/basic/healths";
     }
     @GetMapping("{location}")
     public String divlocation(@PathVariable String location,Model model){
@@ -45,6 +45,21 @@ public class healthController {
         model.addAttribute("healthbylocation", healthbylocation);
         return "basic/location";
     }
-
+    @GetMapping("/{healthnum}/edit")
+    public String editForm(@PathVariable Long healthnum, Model model) {
+        Health health = healthRepository.findById(healthnum);
+        model.addAttribute("health", health);
+        return "basic/editForm";
+    }
+    @PostMapping("/{healthnum}/edit")
+    public String edit(@PathVariable Long healthnum, @ModelAttribute Health health) {
+        healthRepository.update(healthnum, health);
+        return "redirect:/basic/healths";
+    }
+    @GetMapping("{healthnum}/delete")
+    public String delete(@PathVariable Long healthnum, Model model){
+        healthRepository.delete(healthnum);
+        return "redirect:/basic/healths";
+    }
 
 }

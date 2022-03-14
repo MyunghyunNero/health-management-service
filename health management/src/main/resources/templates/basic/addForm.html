@@ -38,7 +38,7 @@
         <div>
             <div>운동 부위 선택 </div>
             <div th:each="type : ${locationtype}" class="form-check">
-                <input type="radio" th:field="*{location}" th:value="${type.name()}" class="form-check-input">
+                <input type="radio" th:field="*{location}" th:value="${type}" class="form-check-input">
                 <label th:for="${#ids.prev('location')}" th:text="${type.location}"  class="form-check-label"></label>
             </div>
         </div>
