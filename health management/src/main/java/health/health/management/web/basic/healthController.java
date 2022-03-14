@@ -7,10 +7,7 @@ import health.health.management.domain.type.Location;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,7 +38,13 @@ public class healthController {
     public String add(@ModelAttribute Health health){
         healthRepository.save(health);
         return "redirect:";
-
     }
+    @GetMapping("{location}")
+    public String divlocation(@PathVariable String location,Model model){
+        List<Health> healthbylocation = healthRepository.findByLocation(location);
+        model.addAttribute("healthbylocation", healthbylocation);
+        return "basic/location";
+    }
+
 
 }

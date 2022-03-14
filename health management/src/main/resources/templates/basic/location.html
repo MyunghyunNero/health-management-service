@@ -4,19 +4,16 @@
     <meta charset="utf-8">
     <link href="../css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
 </head>
 <body>
 <div class="container" style="max-width: 600px">
     <div class="py-5 text-center">
-        <h2>헬스 해야할 것</h2>
-    </div>
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary float-end"
-                    onclick="location.href='addForm.html'"
-                    th:onclick="|location.href='@{/basic/healths/add}'|"
-                    type="button">헬스 일정 등록</button>
-        </div>
+        <h2>부위별 헬스 목록</h2>
     </div>
     <hr class="my-4">
     <div>
@@ -31,15 +28,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="health : ${healths}">
+            <tr th:each="health : ${healthbylocation}">
                 <td th:text="${health.datetime}">날짜</td>
-                <td><a href="location.html" th:href="@{/basic/healths/{location}(location=${health.location})}"th:text="${health.location.getLocation()}">운동 부위</a></td>
+                <td th:text="${health.location.getLocation()}">운동 부위</td>
                 <td th:text="${health.exerciseName}">운동</td>
                 <td th:text="${health.set}">10</td>
                 <td th:text="${health.count}">10</td>
             </tr>
             </tbody>
         </table>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='items.html'"
+                    th:onclick="|location.href='@{/basic/healths}'|"
+                    type="button">목록으로</button>
+        </div>
     </div>
 </div> <!-- /container -->
 </body>
