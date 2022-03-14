@@ -36,5 +36,12 @@
   * addForm // 등록하는 폼       (구현)
   * healths  // 헬스 목록 폼       (구현)
   * location   // 부위 별로 목록 폼  (구현
+
+
+
+## 삭제 기능, 완료 체크 기능 외의 기능들 
+
+
+https://user-images.githubusercontent.com/91003734/158183145-f0fb6433-1354-418a-a8d5-37ad2637d470.mp4
     
 
