@@ -3,13 +3,13 @@ package health.health.management.domain.type;
 public enum Location {
     SHOULEDER("어깨"), ARM("팔"), CHEST("가슴"),BACK("등"),LOWER("하체");
 
-    private String location;
+    private String loc;
 
     Location(String value){
-        this.location=value;
+        this.loc=value;
     }
 
     public String getLocation() {
-        return location;
+        return loc;
     }
 }

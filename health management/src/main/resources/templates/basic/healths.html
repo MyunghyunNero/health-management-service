@@ -29,6 +29,8 @@
                 <th>운동</th>
                 <th>세트</th>
                 <th>횟수</th>
+                <th>끝</th>
+                <th>완료</th>
             </tr>
             </thead>
             <tbody>
@@ -41,6 +43,10 @@
                 <td th:text="${health.exerciseName}">운동</td>
                 <td th:text="${health.set}">10</td>
                 <td th:text="${health.count}">10</td>
+                <td th:text="${health.state}">10</td>
+                <td><button class="w-100 btn btn-primary btn-lg"
+                            onclick="location.href='editForm.html'"
+                            th:onclick="|location.href='@{/basic/healths/{healthnum}/state (healthnum=${health.num})}'|" type="button">finish!</button></td>
             </tr>
             </tbody>
         </table>

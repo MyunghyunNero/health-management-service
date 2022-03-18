@@ -43,4 +43,9 @@ public class healthRepository {
         store.remove(num);
     }
 
+    public void changeState(Long num){
+        Health findhealth = findById(num);
+        findhealth.setState("O");
+    }
+
 }

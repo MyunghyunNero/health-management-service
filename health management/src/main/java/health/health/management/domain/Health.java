@@ -13,7 +13,7 @@ public class Health {
     private String exerciseName;
     private int set;
     private int count;
-    private String state="not finish";
+    private String state="X";
 
     public Health(){}
     public Health(String datetime,String exerciseName, int set, int count) {
