@@ -56,7 +56,7 @@ public class healthController {
         healthRepository.update(healthnum, health);
         return "redirect:/basic/healths";
     }
-    @PostMapping("/{healthnum}/delete")
+    @GetMapping("/{healthnum}/delete")
     public String delete(@PathVariable Long healthnum, Model model){
         healthRepository.delete(healthnum);
         return "redirect:/basic/healths";

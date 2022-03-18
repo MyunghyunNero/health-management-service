@@ -23,6 +23,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>삭제</th>
                 <th>수정</th>
                 <th>날짜</th>
                 <th>운동 부위</th>
@@ -35,6 +36,9 @@
             </thead>
             <tbody>
             <tr th:each="health : ${healths}">
+                <td><button class="w-100 btn btn-primary btn-lg"
+                            onclick="location.href='editForm.html'"
+                            th:onclick="|location.href='@{/basic/healths/{healthnum}/delete (healthnum=${health.num})}'|" type="button">삭제</button></td>
                 <td><button class="w-100 btn btn-primary btn-lg"
                             onclick="location.href='editForm.html'"
                             th:onclick="|location.href='@{/basic/healths/{healthnum}/edit(healthnum=${health.num})}'|" type="button">수정</button></td>
