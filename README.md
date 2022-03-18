@@ -4,7 +4,7 @@
  * 헬스 일정 등록하기   (구현)
  * 헬스 일정 조회하기   (구현)
  * 헬스 일정 완료하면 완료 체크 하기   (구현)
- * 헬스 일정 삭제하기 //클릭시 무작동하넹...
+ * 헬스 일정 삭제하기 (구현)
  * 헬스 일정 수정하기  (구현)
  
  * 헬스 부위 구분하기 (어꺠,팔,가슴,등,하체)   (구현)   
@@ -19,6 +19,7 @@
     * (string) exercise //운동 이름   
     * (int) set //세트 횟수  
     * (int) count //세트당 횟수   
+    * (string) state // 완료 여부
   * health location   
     * shoulder   
     * arm   
@@ -31,7 +32,7 @@
   * findAll() // 모든 목록 출력       (구현)
   * save() // 저장                 (구현)
   * findByLocation() // 부위별로 저장 (구현)
-  * delete()  //삭제       구현했는데 무작동함 왜이럴까..
+  * delete()  //삭제       (구현)
   * changeState()   // 완료 변화 (구현)
   * findbyId()       //id를 통해 객체 찾기(구현)
   * update()   //수정          (구현)
@@ -44,10 +45,13 @@
 
 
 
-## 삭제 기능, 완료 체크 기능 외의 기능들 
+## 전부 구현 (예외 처리 등 제외)  -뭔가 어색하고 부족한게 느껴진다.. 
 
 
-https://user-images.githubusercontent.com/91003734/159004362-d8bae99d-b248-4a40-a599-ce1c402375c6.mp4
+
+https://user-images.githubusercontent.com/91003734/159005983-5ae236f2-6f37-4d4f-8878-5b77e6aa7544.mp4
+
+
 
 
     
