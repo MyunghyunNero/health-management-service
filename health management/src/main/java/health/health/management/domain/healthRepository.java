@@ -1,36 +1,38 @@
 package health.health.management.domain;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.w3c.dom.Entity;
 
+import javax.persistence.EntityManager;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
+@RequiredArgsConstructor
 public class healthRepository {
 
-    private static final Map<Long,Health> store = new HashMap<>();
-    private static Long sequence=0L;
+    private final EntityManager entityManager;
     // 저장
     public Health save(Health health){
-        health.setNum(++sequence);
-        store.put(health.getNum(),health);
+        entityManager.persist(health);
         return health;
     }
     //모든 값 불러오기
     public List<Health> findAll(){
-        return new ArrayList<>(store.values());
-    }
+        return entityManager.createQuery("select h from Health h",Health.class)
+                .getResultList();}
 
     // location값으로 일정 찾기
     public List<Health> findByLocation(String location){
-        return store.values().stream()
-                .filter(health -> health.getLocation().name().equals(location))
-                .collect(Collectors.toList());
+        return entityManager.createQuery("select h from Health h where h.location= :location",Health.class)
+                .setParameter("location",location)
+                .getResultList();
     }
     // num값으로 일정 찾기
     public Health findById(Long num){
-        return store.get(num);
+        return entityManager.find(Health.class,num);
     }
     public void update(Long num,Health updateparam){
         Health findhealth = findById(num);
@@ -40,12 +42,9 @@ public class healthRepository {
     }
     // 일정 삭제하기
     public void delete(Long num){
-        store.remove(num);
+        Health health =entityManager.find(Health.class,num);
+        entityManager.remove(health);
     }
 
-    public void changeState(Long num){
-        Health findhealth = findById(num);
-        findhealth.setState("O");
-    }
 
 }

@@ -1,13 +1,17 @@
 package health.health.management.domain;
 
 import health.health.management.domain.type.Location;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Data
+import javax.persistence.*;
+
+@Entity
+@Setter @Getter
 public class Health {
+    @Id @GeneratedValue
     private Long num;
+    @Enumerated(EnumType.STRING)
     private Location location;
     private String datetime;
     private String exerciseName;

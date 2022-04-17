@@ -4,6 +4,7 @@ package health.health.management.web.basic;
 import health.health.management.domain.Health;
 import health.health.management.domain.healthRepository;
 import health.health.management.domain.type.Location;
+import health.health.management.service.HealthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class healthController {
 
-    private final healthRepository healthRepository =  new healthRepository();
+    private final HealthService healthService;
 
     @ModelAttribute("locationtype")
     public Location[] locations(){
@@ -25,7 +26,7 @@ public class healthController {
 
     @GetMapping
     public String healths(Model model){
-        List<Health> healths =healthRepository.findAll();
+        List<Health> healths =healthService.findAll();
         model.addAttribute("healths",healths);
         return "basic/healths";
     }
@@ -36,34 +37,34 @@ public class healthController {
     }
     @PostMapping("/add")
     public String add(@ModelAttribute Health health){
-        healthRepository.save(health);
+        healthService.join(health);
         return "redirect:/basic/healths";
     }
     @GetMapping("{location}")
     public String divlocation(@PathVariable String location,Model model){
-        List<Health> healthbylocation = healthRepository.findByLocation(location);
+        List<Health> healthbylocation = healthService.findByLocation(location);
         model.addAttribute("healthbylocation", healthbylocation);
         return "basic/location";
     }
     @GetMapping("/{healthnum}/edit")
     public String editForm(@PathVariable Long healthnum, Model model) {
-        Health health = healthRepository.findById(healthnum);
+        Health health = healthService.findById(healthnum);
         model.addAttribute("health", health);
         return "basic/editForm";
     }
     @PostMapping("/{healthnum}/edit")
     public String edit(@PathVariable Long healthnum, @ModelAttribute Health health) {
-        healthRepository.update(healthnum, health);
+        healthService.update(healthnum, health);
         return "redirect:/basic/healths";
     }
     @GetMapping("/{healthnum}/delete")
     public String delete(@PathVariable Long healthnum, Model model){
-        healthRepository.delete(healthnum);
+        healthService.delete(healthnum);
         return "redirect:/basic/healths";
     }
     @GetMapping("/{healthnum}/state")
     public String state(@PathVariable Long healthnum ){
-        healthRepository.changeState(healthnum);
+        healthService.changeState(healthnum);
         return "redirect:/basic/healths";
     }
 
