@@ -1,31 +1,51 @@
 # 토이 프로젝트 : 헬스 관리 서비스 만들기
 
+
+##추가구현
+
+데이터베이스 연결,로그인 기능 연결,검증기능 사용 
+
+
 ### 요구사항
+
  * 헬스 일정 등록하기   (구현)
  * 헬스 일정 조회하기   (구현)
  * 헬스 일정 완료하면 완료 체크 하기   (구현)
  * 헬스 일정 삭제하기 (구현)
  * 헬스 일정 수정하기  (구현)
- 
- * 헬스 부위 구분하기 (어꺠,팔,가슴,등,하체)   (구현)   
+ * 헬스 부위 구분하기 (어꺠,팔,가슴,등,하체)   (구현) 
+ * 로그인 기능 
+ * 헬스 상품 구매 
+ * 헬스 상품 취소
  
  
  ### 데이터   (구현)
- 
-  * health    
-    * long) number   
-    * (string) datetime //날짜   
-    * (enum) health location //헬스 부위   
-    * (string) exercise //운동 이름   
-    * (int) set //세트 횟수  
-    * (int) count //세트당 횟수   
-    * (string) state // 완료 여부
-  * health location   
-    * shoulder   
-    * arm   
-    * chest   
-    * back   
-    * lower body   
+ * member
+    * (long) memberid
+    * (health[]) healthdate
+    * (order[])  order
+ * item
+   * (long) itemid 
+   * (string) itemname
+   * (long)  stockquantity
+ * Order
+   * (long) orderid
+   * (long) memberid
+   * 
+ * health    
+   * (long) number   
+   * (string) datetime //날짜   
+   * (enum) health location //헬스 부위   
+   * (string) exercise //운동 이름   
+   * (int) set //세트 횟수  
+   * (int) count //세트당 횟수   
+   * (string) state // 완료 여부
+ * health location   
+   * shoulder   
+   * arm   
+   * chest   
+   * back   
+   * lower body   
 
 
  ### 기능
