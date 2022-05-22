@@ -23,14 +23,9 @@ public class Health{
 
     @Enumerated(EnumType.STRING)
     private Location location;
-
-
-
-
-
-
-
-
-
-
+    private String datetime;
+    private String exerciseName;
+    private int set;
+    private int count;
+    private String state="X";
 }
