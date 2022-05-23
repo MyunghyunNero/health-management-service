@@ -16,8 +16,9 @@ public class HealthRepository {
         em.persist(health);
     }
 
-    public List<Health> findAll(){
-        return em.createQuery("select h from Health h",Health.class)
+    public List<Health> findAll(Long id){
+        return em.createQuery("select h from Health h join h.member m where m.id =:id",Health.class)
+                .setParameter("id",id)
                 .getResultList();
     }
 
