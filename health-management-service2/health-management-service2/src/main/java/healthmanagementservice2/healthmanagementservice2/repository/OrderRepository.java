@@ -20,7 +20,7 @@ public class OrderRepository {
     public Order findOne(Long id){
         return em.find(Order.class,id);
     }
-    public List<Order> findAll(long id){
+    public List<Order> findAll(Long id){
         return em.createQuery("select o from Order o join o.member m where m.id =:id",Order.class)
                 .setParameter("id",id)
                 .getResultList();

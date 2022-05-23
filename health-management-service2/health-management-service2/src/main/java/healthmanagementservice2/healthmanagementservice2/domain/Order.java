@@ -25,4 +25,22 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    public void setMember(Member member){
+        this.member=member;
+        member.getOrders().add(this);
+    }
+    public void addOrderItem(Orderitem orderitem){
+        orderItems.add(orderitem);
+        orderitem.setOrder(this);
+    }
+    public static Order createOrder(Member member,Orderitem... orderitems){
+        Order order=new Order();
+        order.setMember(member);
+        for(Orderitem orderitem: orderitems){
+            order.addOrderItem(orderitem);
+        }
+        order.setOrderStatus(OrderStatus.ORDER);
+        return order;
+    }
+
 }

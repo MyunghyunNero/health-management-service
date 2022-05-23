@@ -18,4 +18,19 @@ public class Item {
     private int price;
     private int stockQuantity;
 
+    public static Item createItem(String name,int price ,int stockQuantity){
+        Item item=new Item();
+        item.name=name;
+        item.price=price;
+        item.stockQuantity=stockQuantity;
+        return item;
+    }
+    public void addStock(int quantity){
+        this.stockQuantity+=quantity;
+    }
+    public void removeStock(int quantity){
+        int restStock = this.stockQuantity - quantity;
+        this.stockQuantity=restStock;
+    }
+
 }
