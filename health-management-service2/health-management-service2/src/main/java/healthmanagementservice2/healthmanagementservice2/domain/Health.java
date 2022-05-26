@@ -1,6 +1,7 @@
 package healthmanagementservice2.healthmanagementservice2.domain;
 
 
+import jdk.dynalink.beans.StaticClass;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,4 +29,9 @@ public class Health{
     private int set;
     private int count;
     private String state="X";
+
+    public static Health createHealth(Member member, Health health){
+        health.setMember(member);
+        return health;
+    }
 }

@@ -32,7 +32,7 @@ public class Orderitem {
         orderitem.setOrderPrice(price);
         orderitem.setCount(count);
 
-        //item.removeStock(count);
+        item.removeStock(count);
         return orderitem;
     }
 }

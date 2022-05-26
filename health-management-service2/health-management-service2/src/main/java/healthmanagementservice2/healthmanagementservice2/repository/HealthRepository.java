@@ -25,6 +25,12 @@ public class HealthRepository {
     public Health findOne(Long id){
         return em.find(Health.class,id);
     }
+    public List<Health> findByLocation(String location,Long id){
+        return em.createQuery("select h from Health h join h.member m where m.id=:id and h.location =:location",Health.class)
+                .setParameter("location",location)
+                .setParameter("id",id)
+                .getResultList();
+    }
 
     public void delete(Long id){
         Health health=em.find(Health.class,id);
