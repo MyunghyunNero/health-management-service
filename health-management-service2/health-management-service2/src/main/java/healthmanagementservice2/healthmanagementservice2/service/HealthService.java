@@ -29,7 +29,7 @@ public class HealthService {
     public List<Health> findAll(Long id){
         return healthRepository.findAll(id);
     }
-    public List<Health> findByLocation(String location,Long id){
+    public List<Health> findByLocation(Location location,Long id){
         return healthRepository.findByLocation(location, id);
     }
     public void delete(Long id){

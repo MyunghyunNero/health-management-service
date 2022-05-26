@@ -7,9 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
+
 @Table(name = "healths")
 @Getter @Setter
+@Entity
 public class Health{
 
     @Id @GeneratedValue
@@ -20,15 +21,12 @@ public class Health{
     @JoinColumn(name = "member_id")
     private Member member; //헬스 회원
 
-    private String datatime;
-
     @Enumerated(EnumType.STRING)
-    private Location location;
-    private String datetime;
+    private Location exerciseLocation;
+    private String exercisetime;
     private String exerciseName;
-    private int set;
-    private int count;
-    private String state="X";
+    private int healthset;
+    private int healthcount;
 
     public static Health createHealth(Member member, Health health){
         health.setMember(member);

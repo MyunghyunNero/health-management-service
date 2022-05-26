@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -29,6 +30,11 @@ public class MemberRepository {
         return em.createQuery("select m from Member m where m.name= :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
+    }
+    public Optional<Member> findByLoginId(String longId){
+        return findAll().stream()
+                .filter(m -> m.getLoginId().equals(longId))
+                .findFirst();
     }
 
 }

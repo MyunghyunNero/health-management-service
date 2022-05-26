@@ -1,6 +1,7 @@
 package healthmanagementservice2.healthmanagementservice2.repository;
 
 import healthmanagementservice2.healthmanagementservice2.domain.Health;
+import healthmanagementservice2.healthmanagementservice2.domain.Location;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -25,8 +26,8 @@ public class HealthRepository {
     public Health findOne(Long id){
         return em.find(Health.class,id);
     }
-    public List<Health> findByLocation(String location,Long id){
-        return em.createQuery("select h from Health h join h.member m where m.id=:id and h.location =:location",Health.class)
+    public List<Health> findByLocation(Location location, Long id){
+        return em.createQuery("select h from Health h join h.member m where h.exerciseLocation =:location and m.id=:id ",Health.class)
                 .setParameter("location",location)
                 .setParameter("id",id)
                 .getResultList();
