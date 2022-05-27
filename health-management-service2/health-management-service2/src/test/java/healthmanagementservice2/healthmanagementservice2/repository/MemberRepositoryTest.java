@@ -24,8 +24,9 @@ public class MemberRepositoryTest {
         member.setLoginId("test");
         member.setPassword("test");
         memberRepository.save(member);
-        Member member2=memberRepository.findOne(1L);
-        Assertions.assertThat(member).isEqualTo(member2);
+        Member member2=memberRepository.findOne(member.getId());
+        Assertions.assertThat(member.getId()).isEqualTo(1L);
+        Assertions.assertThat(member2).isEqualTo(member);
 
     }
 }
