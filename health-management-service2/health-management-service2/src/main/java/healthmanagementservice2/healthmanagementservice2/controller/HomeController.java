@@ -1,6 +1,5 @@
-package healthmanagementservice2.healthmanagementservice2;
+package healthmanagementservice2.healthmanagementservice2.controller;
 
-import healthmanagementservice2.healthmanagementservice2.Login.LoginForm;
 import healthmanagementservice2.healthmanagementservice2.Login.SessionConst;
 import healthmanagementservice2.healthmanagementservice2.domain.Member;
 import healthmanagementservice2.healthmanagementservice2.service.MemberService;

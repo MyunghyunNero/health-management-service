@@ -45,7 +45,7 @@ public class LoginController {
         //redirectURL 적용
         return "redirect:"+redirtURL;
     }
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logoutV3(HttpServletRequest request) {
         //세션을 삭제한다.
         HttpSession session = request.getSession(false);
