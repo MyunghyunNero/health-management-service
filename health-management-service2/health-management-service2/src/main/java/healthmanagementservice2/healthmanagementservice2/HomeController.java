@@ -20,6 +20,7 @@ public class HomeController {
         if(loginmember==null){
             return "home";
         }
-        return "home"; //이따가 수정
+        return "loginHome"; //이따가 수정
     }
+
 }
