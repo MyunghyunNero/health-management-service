@@ -27,9 +27,14 @@ public class Health{
     private String exerciseName;
     private int healthset;
     private int healthcount;
+    private String exercisestate;
 
     public static Health createHealth(Member member, Health health){
         health.setMember(member);
+        health.setExercisestate("done?");
         return health;
+    }
+    public void finish(){
+        this.setExercisestate("finish!");
     }
 }

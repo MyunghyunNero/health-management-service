@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>부위별 헬스 목록</h2>
+    </div>
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>날짜</th>
+                <th>운동 부위</th>
+                <th>운동</th>
+                <th>세트</th>
+                <th>횟수</th>
+                <th>끝</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="health : ${healthbylocation}">
+                <td th:text="${health.exercisetime}">날짜</td>
+                <td th:text="${health.exerciseLocation.getLocation()}">운동 부위</td>
+                <td th:text="${health.exerciseName}">운동</td>
+                <td th:text="${health.healthset}">10</td>
+                <td th:text="${health.healthcount}">10</td>
+                <td th:text="${health.exercisestate}">10</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='loginHome.html'"
+                    th:onclick="|location.href='@{/}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>

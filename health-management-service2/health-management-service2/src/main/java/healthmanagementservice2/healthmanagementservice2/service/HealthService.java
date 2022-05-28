@@ -1,8 +1,6 @@
 package healthmanagementservice2.healthmanagementservice2.service;
 
-import healthmanagementservice2.healthmanagementservice2.domain.Health;
-import healthmanagementservice2.healthmanagementservice2.domain.Location;
-import healthmanagementservice2.healthmanagementservice2.domain.Member;
+import healthmanagementservice2.healthmanagementservice2.domain.*;
 import healthmanagementservice2.healthmanagementservice2.repository.HealthRepository;
 import healthmanagementservice2.healthmanagementservice2.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +24,9 @@ public class HealthService {
         Health health=Health.createHealth(member,health1);
         healthRepository.save(health);
     }
+    public Health findbyId(Long id){
+        return healthRepository.findOne(id);
+    }
     public List<Health> findAll(Long id){
         return healthRepository.findAll(id);
     }
@@ -34,5 +35,18 @@ public class HealthService {
     }
     public void delete(Long id){
         healthRepository.delete(id);
+    }
+    @Transactional         //변경 감지
+    public void updateHealth(Long id, String date, String name,int set,int count) {
+        Health health=healthRepository.findOne(id);
+        health.setExercisetime(date);
+        health.setExerciseName(name);
+        health.setHealthset(set);
+        health.setHealthcount(count);
+    }
+    @Transactional
+    public void finishexercise(Long healthId){
+        Health health = healthRepository.findOne(healthId);
+        health.finish();
     }
 }
