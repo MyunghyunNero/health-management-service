@@ -36,5 +36,12 @@ public class OrderService {
     public List<Order> findAll(Long id){
         return orderRepository.findAll(id);
     }
+    @Transactional
+    public void cancelOrder(Long orderId){
+        //주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        //주문 취소
+        order.cancel();
+    }
 
 }

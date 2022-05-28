@@ -42,5 +42,11 @@ public class Order {
         order.setOrderStatus(OrderStatus.ORDER);
         return order;
     }
+    public void cancel() {
+        this.setOrderStatus(OrderStatus.CANCEL);
+        for (Orderitem orderItem : orderItems) {
+            orderItem.cancel();
+        }
+    }
 
 }

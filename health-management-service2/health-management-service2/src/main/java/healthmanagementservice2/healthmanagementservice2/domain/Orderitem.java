@@ -35,4 +35,7 @@ public class Orderitem {
         item.removeStock(count);
         return orderitem;
     }
+    public void cancel() {
+        getItem().addStock(count);
+    }
 }
