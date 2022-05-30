@@ -11,6 +11,7 @@ import healthmanagementservice2.healthmanagementservice2.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +28,21 @@ public class OrderController {
     public String createForm(Model model){
         List<Item> items = itemService.findItems();
         model.addAttribute("items",items);
+        model.addAttribute("item2",new Item());
+
         return "orders/orderForm";
     }
 
     @PostMapping("/add")
-    public String create(@SessionAttribute(name = SessionConst.LOGIN_MEMBER,required = false)
-                                     Member loginmember, @RequestParam Long itemId,@RequestParam("count") int count){
+    public String create(@ModelAttribute("item2") Item item,BindingResult bindingResult,@SessionAttribute(name = SessionConst.LOGIN_MEMBER,required = false)
+                                     Member loginmember, @RequestParam Long itemId, @RequestParam("count") int count,Model model){
+        Item item1=itemService.findOne(itemId);
+        if(item1.getStockQuantity()<count){
+            List<Item> items = itemService.findItems();
+            model.addAttribute("items",items);
+            bindingResult.rejectValue("stockQuantity","range", new Object[]{},"재고가 없습니다 현재 재고="+item1.getStockQuantity());
+            return "orders/orderForm";
+        }
         orderService.order(loginmember.getId(), itemId,count);
         return "redirect:/";
     }

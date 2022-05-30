@@ -8,6 +8,10 @@
         .container {
             max-width: 560px;
         }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -19,12 +23,15 @@
     <form th:action="@{/healths/add}" th:object="${healthform}" method="post">
         <div>
             <label for="datetime">헬스 날짜</label>
-            <input type="text" id="datetime" th:field="*{exercisetime}" class="form-control" placeholder="날짜를 입력하세요">
+            <input type="text" id="datetime" th:field="*{exercisetime}" class="form-control"
+                   th:errorclass="field-error" placeholder="날짜를 입력하세요">
+            <div class="field-error" th:errors="*{exercisetime}" />
         </div>
         <div>
             <label for="exerciseName">운동</label>
             <input type="text" id="exerciseName" th:field="*{exerciseName}" class="form-control"
-                   placeholder="해야할 운동을 입력하세요">
+                   th:errorclass="field-error" placeholder="해야할 운동을 입력하세요">
+            <div class="field-error" th:errors="*{exerciseName}" />
         </div>
         <div>
             <label for="set">세트</label>

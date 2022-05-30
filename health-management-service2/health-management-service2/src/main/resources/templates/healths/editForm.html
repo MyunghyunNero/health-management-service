@@ -8,6 +8,10 @@
         .container {
             max-width: 560px;
         }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -19,8 +23,9 @@
         <input type="hidden" th:field="*{id}" />
         <div>
             <label for="datetime">날짜</label>
-            <input type="text" id="datetime" name="datetime" class="form-control" value="yyyymmdd"
+            <input type="text" id="datetime" name="datetime" class="form-control"  th:errorclass="field-error" value="yyyymmdd"
                    th:field="*{exercisetime}" >
+            <div class="field-error" th:errors="*{exercisetime}" />
         </div>
         <div>
             <label for="location">운동 부위</label>
@@ -28,7 +33,9 @@
         </div>
         <div>
             <label for="exerciseName">운동 이름</label>
-            <input type="text" id="exerciseName" name="exerciseName" class="form-control" value="운동 이름" th:field="*{exerciseName}" >
+            <input type="text" id="exerciseName" name="exerciseName" class="form-control"  th:errorclass="field-error"
+                   value="운동 이름" th:field="*{exerciseName}" >
+            <div class="field-error" th:errors="*{exerciseName}" />
         </div>
         <div>
             <label for="set">세트</label>

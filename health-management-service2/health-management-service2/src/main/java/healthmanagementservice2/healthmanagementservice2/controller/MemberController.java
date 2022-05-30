@@ -26,8 +26,13 @@ public class MemberController {
     }
 
     @PostMapping("/add")
-    public String save(@Valid @ModelAttribute SignMember signMember, BindingResult bindingResult){
+    public String save(@Valid @ModelAttribute("member") SignMember signMember, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
+            return "members/addMemberForm";
+        }
+        List<Member> findMembers = memberService.findByName(signMember.getName());
+        if (!findMembers.isEmpty()) {
+            bindingResult.reject("signFail","존재하는 아이디 입니다..");
             return "members/addMemberForm";
         }
         Member member=new Member();
