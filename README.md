@@ -19,7 +19,7 @@
  * 헬스 상품 구매 (구현)
  * 헬스 상품 취소 (구현)
  * 주문 생성, 취소  (구현)
- * 검증 이용 validation
+ * 검증 이용 validation  (구현)
  
  ### 데이터   (구현)
   #### 도메인
@@ -34,9 +34,12 @@
   * 회원-헬스 일대다 관계
  
 
+## 회원가입 로그인 헬스 기능들
+https://user-images.githubusercontent.com/91003734/171020405-77a75213-17fc-4d88-ba23-eef56c96a962.mp4
 
-https://user-images.githubusercontent.com/91003734/159005983-5ae236f2-6f37-4d4f-8878-5b77e6aa7544.mp4
+## 상품 기능 및 주문 기능 및 로그아웃
 
+https://user-images.githubusercontent.com/91003734/171020557-f1ffc8f0-36cf-4d42-9691-0363acebcce0.mp4
 
 
 
