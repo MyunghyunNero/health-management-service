@@ -78,7 +78,7 @@ public class HealthController {
         healthForm.setExercisestate(health.getExercisestate());
         healthForm.setExercisetime(health.getExercisetime());
         healthForm.setExerciseName(health.getExerciseName());
-        model.addAttribute("healthForm", healthForm);
+        model.addAttribute("healthform", healthForm);
         return "healths/editForm";
     }
     @PostMapping("/{healthnum}/edit")
